@@ -1,0 +1,59 @@
+html{
+    background-color: #9059a0;
+    color: white;
+}
+.photo{
+    background-color: #2db29b;
+    border: 3px dotted thistle;
+    height: 630px;
+    width: 100%;
+}
+.list1{
+    background-color: white;
+    color: black;
+    border: 5px ridge #2db29b;
+    height: 25%;
+    width: 95%;
+}
+.list2{
+    background-color: white;
+    color: black;
+    border: 5px ridge #2db29b;
+    height: 25%;
+    width: 95%;
+}
+section {
+    float: left;
+    width: 45%;
+}
+.text1{
+    font-family: Courier, monospace;;
+    font-size: 15px;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+.photo1{
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+.name{
+    text-align: center;
+    font-size: 30px;
+}
+.text2{
+    font-size: 19px;
+    font-family: Courier, monospace;
+    margin-top: 12%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+}
+.photo2{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+.text1_1{
+    font-size: 19px;
+}

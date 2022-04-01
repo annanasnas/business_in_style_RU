@@ -1,0 +1,30 @@
+N1 = input('Кол-во купюр номиналом 50 рублей - ')
+money1 = int(N1)*50
+N2 = input('Кол-во купюр номиналом 100 рублей - ')
+money2 = int(N2)*100
+N3 = input('Кол-во купюр номиналом 200 рублей - ')
+money3 = int(N3)*200
+money_sum = money1 + money2 + money3
+price = input('Сумма покупки - ')
+while int(price) > money_sum:
+    print('ОШИБКА ПОВТОРИТЕ ВВОД')
+    price = input('Сумма покупки - ')
+change = money_sum - int(price)
+change_10rub = change // 10
+change_reserved1 = change % 10
+change_5rub = change_reserved1 // 5
+change_reserved2 = change_reserved1 % 5
+change_1rub = change_reserved2
+print(change_10rub)
+print(change_5rub)
+print(change_1rub)
+
+
+
+
+
+
+
+
+
+
