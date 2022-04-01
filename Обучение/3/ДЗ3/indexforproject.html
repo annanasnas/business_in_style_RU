@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+   
+        
+        #myTable {
+          border-collapse: collapse;
+          width: 100%;
+          border: 0px solid #ddd;
+          font-size: 18px;
+          font-family: "Gill Sans", sans-serif;
+        }
+        
+        #myTable th{
+          text-align: left;
+          padding: 12px;
+          color: steelblue;
+          
+        }
+        #myTable td{
+                padding: 12px;
+
+        }
+        
+        #myTable tr {
+          border-bottom: 0px solid #ddd;
+        }
+        
+        #myTable tr:nth-child(odd) {  
+            text-align: left;}
+            #myTable tr:nth-child(4n-2), #myTable tr:nth-child(4n-3) {
+               
+                 font-weight: bold;
+                 font-size: 100%;
+                 color: 	steelblue;
+                 padding: 6px;
+                  
+                 }
+                
+                  
+                         
+        
+
+        
+        .pdf{
+          background-color: #adcbe3 ;
+          
+          border: none;
+          color: black;
+          padding: 12px 30px;
+          cursor: pointer;
+          font-size: 16px;
+          float:right;
+        }
+        .pdf:hover{
+        background-color: #ddd;
+      
+        }
+        </style>
+
+
+<script>
+  
+    function createPDF() {
+            var sTable = document.getElementById('tab').innerHTML;
+    
+            var style = "<style>";
+            style = style + "table {border-collapse: collapse; width: 100%; border: 0px solid #ddd; font-size: 18px;  font-family:sans-serif;}";
+            style = style + "table, th, td, {border-collapse: collapse; width: 100%; border: 0px solid #ddd; font-size: 18px;  font-family:sans-serif;}";
+            style = style + "table,  tr:nth-child(even) td { text-align: right;} ";
+            style = style + "table,  tr:nth-child(odd) td { text-align: left;} ";
+            style = style + "table,  tr:nth-child(4n-2) td,tr:nth-child(4n-3) td { font-weight: bold; font-size: 100%;  #} ";
+            style = style + "table,  tr:nth-child(4n) { line-height:200%;} ";
+            style = style + " padding: 12px;;text-align: left;}";
+            style = style +"H1{text-align:left;}";
+            
+            style = style + "</style>";
+    
+           
+            var win = window.open('', '', 'height=700,width=700');
+    
+            win.document.write('<html><head>');
+          
+            win.document.write(style);        
+            win.document.write('</head>');
+            win.document.write('<H1> Кинематика</H1>');  	
+            win.document.write('<body>');
+            win.document.write(sTable);        
+            win.document.write('</body></html>');
+    
+            win.document.close();
+    
+            win.print();    
+        }
+    
+    </script>
+
+
+
+<script>
+    var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1SlZUpEgSuvhsP5LdIvm1jxiJP5rKP92M88G_Y53WO_Q/edit#gid=0';
+    
+    function init() {
+Tabletop.init( {
+key: publicSpreadsheetUrl,
+callback: showInfo,
+simpleSheet: true 
+} )
+}
+
+function showInfo(data, tabletop) {
+
+let myTable = document.querySelector('#myTable');
+if(data.length){
+let columns = Object.getOwnPropertyNames(data[0]);
+columns.forEach(col => {
+  let th = document.createElement('th');
+  th.innerText = col;
+  myTable.appendChild(th);
+
+
+});
+
+data.forEach(row => {
+         
+let tr = document.createElement('tr');
+  columns.forEach(col => {
+        let td = document.createElement('td');
+        td.innerHTML = row[col];
+        tr.appendChild(td);
+
+  });
+  myTable.appendChild(tr);
+
+});
+}
+
+}
+
+window.addEventListener('DOMContentLoaded', init)
+</script>
+
+   
+</head>
+<body>
+    <p>
+        <input class="pdf" type="button" value="Create PDF" 
+            id="btPrint" onclick="createPDF()" />
+    </p>
+    
+    
+    
+    <div id="tab">
+    <table id="myTable"> 
+        </table>
+        </div> 
+    
+</body>
+</html>
